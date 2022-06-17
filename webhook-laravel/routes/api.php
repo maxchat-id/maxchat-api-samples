@@ -22,13 +22,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('webhook', function (Request $request) {
     $input = $request->all();
     $data = $input['data'];
+    $token = 'hapusJikaTidakDiperlukanAtauKomen';
+    $baseUrl = 'http://127.0.0.1:10001/api';
 
     if ($input['event'] === 'new' && $input['type'] === 'message' && $data['type'] === 'text')
     $response = Http::withHeaders([
         'Content-Type' => 'application/json',
         'Accept' => 'application/json',
-        'Authorization' => 'bearer hapusJikaTidakDiperlukanAtauKomen',
-    ])->post('http://127.0.0.1:10001/api/messages?direct=true', [
+        'Authorization' => 'bearer ' . $token,
+    ])->post($baseUrl . '/messages?direct=true', [
         "to" => $data['sender'],
         "text" => $data['text']
     ]);
