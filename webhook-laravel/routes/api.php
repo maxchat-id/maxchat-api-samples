@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Http;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -40,3 +39,32 @@ Route::post('webhook', function (Request $request) {
         "data" => $input,
     ]);
 });
+
+
+/* GET MESSAGES */
+function getMessages() {
+    $response = Http::withHeaders([
+        'Content-Type' => 'application/json',
+        'Accept' => 'application/json',
+        'Authorization' => 'bearer TOKEN-DI-DASHBOARD',
+    ])->get('https://demo.maxchat.id/demo6/api/messages');
+
+    echo $response;
+}
+getMessages();
+
+
+/* SEND MESSAGES */
+function sendMessages() {
+    $response = Http::withHeaders([
+        'Content-Type' => 'application/json',
+        'Accept' => 'application/json',
+        'Authorization' => 'bearer TOKEN-DI-DASHBOARD'
+    ])->post('https://demo.maxchat.id/demo1/api/messages', [
+        "to" => "6281331747426",
+        "text" => "hello"
+    ]);
+
+    echo $response->status();
+}
+//sendMessages();
