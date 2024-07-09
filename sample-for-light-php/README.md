@@ -1,0 +1,4 @@
+- copy or rename `.env.sample` to `.env`
+- edit `.env` file
+- run `composer install`
+- run `php index.php`
