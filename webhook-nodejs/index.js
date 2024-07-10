@@ -18,7 +18,7 @@ polka()
 
     res.writeHead(200, { "Content-Type": "text/xml" });
     res.end(
-      '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://www.example.com/SampleService"><soapenv:Body><bpjs:SampleResponse><output>OK</output></bpjs:SampleResponse></soapenv:Body></soapenv:Envelope>'
+      '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bpjs="http://www.example.com/SampleService"><soapenv:Body><bpjs:SampleResponse><output>OK</output></bpjs:SampleResponse></soapenv:Body></soapenv:Envelope>'
     );
   })
   .listen(3000, () => {
