@@ -12,7 +12,7 @@ polka()
     res.writeHead(200, { "Content-Type": "application/json" });
     res.end(JSON.stringify({ message: "OK" }));
   })
-  .use(text({ type: "application/soap+xml" }))
+  .use(text({ type: "text/xml" })) // type disesuaikan dengan header yang dikirim dari sensor, dengan test menggunakan raw.js
   .post("/soap", (req, res) => {
     console.log(req.body);
 
